@@ -1,5 +1,8 @@
 package com.skhoct30.spring.test.lifecycle;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +26,19 @@ public class Test01Controller {
 		
 	}
 	
-
+	@RequestMapping("/2")
+	public Map<String, Integer> jsonResponse() {
+		
+		 Map<String, Integer> scoreMap = new HashMap<>();
+		 
+		 scoreMap.put("국어", 90);
+		 scoreMap.put("수학", 95);
+		 scoreMap.put("영어", 100);
+		 
+		 return scoreMap;
+	}
+	
+	
 	
 
 }
