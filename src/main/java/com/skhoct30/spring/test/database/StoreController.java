@@ -21,6 +21,8 @@ public class StoreController {
 	@ResponseBody
 	public List<Store> storeList() {
 		
+		// Controller 는 서비스를 얻어오기 위한 기능. 
+		// 서비스 패키지 >> 서비스 클래스 작성
 		List<Store> storeList = storeService.getStoreList();
 		
 		
