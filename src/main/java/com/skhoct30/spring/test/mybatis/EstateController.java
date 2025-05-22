@@ -38,6 +38,7 @@ public class EstateController {
 		return estateRent;
 	}
 	
+	@ResponseBody
 	@RequestMapping("/3")
 	public List<Estate> estateAreaAndPrice(
 			@RequestParam("area")int area,
@@ -46,6 +47,37 @@ public class EstateController {
 		List<Estate> estateAreaAndPrice = estateService.getEstateAreaAndPrice(area, price);
 		return estateAreaAndPrice;
 	}
+	
+	
+	
+	// INSERT
+	
+	@RequestMapping("/insert/1")
+	@ResponseBody
+	public String realEstateCreate() {
+		
+//		int count = estateService.addRealEstate(3, "푸르지용 리버 303동 1104호", 89, "매매", 100000);
+//		
+//		return "실행결과 : " + count;
+		
+		Estate estate = new Estate();
+		
+		estate.setAddress("샹떼빌리버 오피스텔 814호");
+		estate.setArea(45);
+		estate.setType("월세");
+		estate.setPrice(100000);
+		estate.setRentPrice(120);
+		
+		int count = estateService.addRealEstateByObject(estate);
+		
+		return "실행결과 : " + count;
+		
+		
+		
+	}
+	
+	
+	
 	
 	
 	

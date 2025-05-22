@@ -38,4 +38,26 @@ public class EstateService {
 		 
 	 }
 	 
+	 
+	 // INSERT
+	 
+	 public int addRealEstate(int realtorId
+			 , String address
+			 , int area
+			 , String type
+			 , int price) {
+		 
+		 int count = estateRepository.insertRealEstate(realtorId, address, area, type, price);
+		 return count;
+	 }
+	 
+	 public int addRealEstateByObject(Estate estate) {
+		 
+		 int count = estateRepository.insertRealEstateByObject(estate);
+		 return count;
+	 }
+	 
+	 
+	 
+	 
 }

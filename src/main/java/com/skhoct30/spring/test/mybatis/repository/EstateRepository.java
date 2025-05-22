@@ -19,5 +19,18 @@ public interface EstateRepository {
 	public List<Estate> selectEstateAreaAndPirce(
 			@Param("area") int area,
 			@Param("price") int price);
+	
+	// insert
+	
+	public int insertRealEstate(
+			@Param("realtorId") int realtorId
+			, @Param("address") String address
+			, @Param("area") int area
+			, @Param("type") String type
+			, @Param("price") int price);
+	
+	
+	public int insertRealEstateByObject(Estate estate);
+	
 }
 
