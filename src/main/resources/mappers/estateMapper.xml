@@ -41,8 +41,29 @@
 		FROM
 			`real_estate`
 		WHERE
-			`rentPrice` = #{rentPrice}
+			`rentPrice` &lt; #{rentPrice}
 
+	</select>
+	
+	<!-- 파라미터가 2개 이상 있을 때 ( 입력받아야하는 값이 2개 있을 때 map 이라고 쓰고 1개면 그 타입(int String 등등) -->
+	<select id="selectEstateAreaAndPirce" parameterType="map"
+	resultType="com.skhoct30.spring.test.mybatis.domain.Estate">
+		SELECT
+			`id`
+			, `realtorId`
+			, `address`
+			, `area`
+			, `type`
+			, `price`
+			, `rentPrice`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`real_estate`
+		WHERE <![CDATA[
+			`area` >= #{area}
+			AND `price` <= #{price}
+			]]>
 	</select>
 
 

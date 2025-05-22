@@ -1,5 +1,7 @@
 package com.skhoct30.spring.test.mybatis;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,13 +29,22 @@ public class EstateController {
 	}
 	
 	
-	@ResponseBody
+	@ResponseBody // 웹에 json 문자열로 보내기 위한 것. 일단 알려줌. . .
 	@RequestMapping("/2")
-	public Estate estateRent(@RequestParam("rent")int rentPrice) {
+	public List<Estate> estateRent(@RequestParam("rent")int rentPrice) {
 		
-		Estate estateRent = estateService.getEstateRent(rentPrice);
+		List<Estate> estateRent = estateService.getEstateRent(rentPrice);
 		
 		return estateRent;
+	}
+	
+	@RequestMapping("/3")
+	public List<Estate> estateAreaAndPrice(
+			@RequestParam("area")int area,
+			@RequestParam("price")int price) {
+		
+		List<Estate> estateAreaAndPrice = estateService.getEstateAreaAndPrice(area, price);
+		return estateAreaAndPrice;
 	}
 	
 	
