@@ -20,6 +20,11 @@ public interface EstateRepository {
 			@Param("area") int area,
 			@Param("price") int price);
 	
+	
+	
+	
+	
+	
 	// insert
 	
 	public int insertRealEstate(
@@ -31,6 +36,29 @@ public interface EstateRepository {
 	
 	
 	public int insertRealEstateByObject(Estate estate);
+	
+	
+	
+
+	
+	
+	// update
+	
+	public int updateRealEstate(
+			@Param("id") int id
+			, @Param("type") String type
+			, @Param("price") int price);
+	
+	
+	
+	
+	
+	
+	// delete
+	
+	public int deleteRealEstate(@Param("id") int id);
+	
+	
 	
 }
 
