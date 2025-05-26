@@ -7,8 +7,21 @@ import com.skhoct30.spring.test.mvc.domain.Seller;
 
 @Mapper
 public interface SellerRepository {
-	public Seller selectSeller(
+	
+	
+	public int insertSeller(
 			@Param("nickname") String nickname
-			, @Param("profileImage") String profileImage
-			, @Param("temperature") double temperature);
+			, @Param("temperature") double temperature
+			, @Param("profileImage") String profileImage);
+	
+	
+	// 2번
+	// 가장 최근에 등록된 행의 정보
+	
+	public Seller selectLastSeller();
+	
+	
+	// 3번
+	public Seller selectSeller(@Param("id") int id);
+	
 }

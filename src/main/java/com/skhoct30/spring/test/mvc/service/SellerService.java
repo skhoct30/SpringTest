@@ -14,10 +14,38 @@ public class SellerService {
 	
 	
 	
-	public Seller addSeller(String nickname, String profileImage, double temperature) {
+	public int addSeller(String nickname, double temperature, String profileImage) {
+			
+		int count = sellerRepository.insertSeller(nickname, temperature, profileImage);
 		
-		Seller seller = sellerRepository.selectSeller(nickname, profileImage, temperature);
+		return count;
+	}
+	
+	
+	
+	
+	
+	// 2번
+	// 가장 최근에 등록한 사용자 정보
+	
+	public Seller getLastSeller() {
+		
+		Seller seller = sellerRepository.selectLastSeller();
 		
 		return seller;
 	}
+	
+	
+	// 3번
+	
+	public Seller getSeller(int id) {
+		
+		Seller seller = sellerRepository.selectSeller(id);
+		
+		return seller;
+	}
+	
+	
+	
 }
+
