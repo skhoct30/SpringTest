@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>연습 문제 2</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container">
+		
+		<h2>HOT 5</h2>	
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th>순위</th>
+					<th>제목</th>
+				</tr>
+			</thead>
+			<tbody th:each="musicRanking:${musicRanking}">
+				<tr>
+					<td>1</td>
+					<td th:text="${musicRanking}">강남스타일</td>
+				</tr>
+			</tbody>
+		</table>
+	
+	
+	</div>
+
+</body>
+</html>
