@@ -94,7 +94,7 @@ public class ThymeleafController {
 	
 	
 	
-	@PostMapping("/test03")
+	@GetMapping("/test03")
 	public String test03(Model model) {
 		
 		

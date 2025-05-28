@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -24,9 +24,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td></td>
-				</tr>
+				<tr th:each="members, status:${members}">
+					<td th:text="${status.count}">1</td>
+					<td th:text="${members.name}">서강현</td>
+					<!--<td th:text="${#temporals.format(birth, 'yyyy년 mm월 dd일')}">1998년 10월 30일</td> -->
+					<td th:text="${members.birth}"></td>
+					<td th:text="${members.phoneNumber}">010-4551-3674</td>
+					<td th:text="${members.nationality}">대한민국 서울</td>
+					<td th:text="${members.email}">skhoct30@naver.com</td>
+					<td th:text="${members.introduce}">안녕하세요 저는 코딩을 배우...</td>
+				</tr>			
 			</tbody>		
 		</table>
 	
