@@ -17,9 +17,9 @@
 					<th>제목</th>
 				</tr>
 			</thead>
-			<tbody th:each="musicRanking:${musicRanking}">
-				<tr>
-					<td>1</td>
+			<tbody>
+				<tr th:each="musicRanking, status:${musicRanking}">
+					<td th:text="${status.count}">1</td>
 					<td th:text="${musicRanking}">강남스타일</td>
 				</tr>
 			</tbody>
