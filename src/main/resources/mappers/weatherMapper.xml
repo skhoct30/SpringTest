@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.skhoct30.spring.test.thymeleaf.repository.WeatherRepository">
+	<!--  parameterType 이 없는 이유 ? : 앞서 우리가 받아오는 과정에서 @Param 어노테이션을 사용하지도 않고 우리는 전체 행의 정보를 얻어올라고 하는거니까 통으로 가져옴 -->
+	<select id="selectWeather" resultType="com.skhoct30.spring.test.thymeleaf.domain.Weather">
+	
+		SELECT
+			`id`
+			, `date`
+			, `weather`
+			, `temperatures`
+			, `precipitation`
+			, `microDust`
+			, `windSpeed`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`weatherhistory`
+	
+	
+	
+	</select>
+
+</mapper>
