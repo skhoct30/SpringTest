@@ -26,13 +26,25 @@
 			<tbody>
 				<tr th:each="members, status:${members}">
 					<td th:text="${status.count}">1</td>
-					<td th:text="${members.name}">서강현</td>
-					<!--<td th:text="${#temporals.format(birth, 'yyyy년 mm월 dd일')}">1998년 10월 30일</td> -->
-					<td th:text="${members.birth}"></td>
-					<td th:text="${members.phoneNumber}">010-4551-3674</td>
-					<td th:text="${members.nationality}">대한민국 서울</td>
-					<td th:text="${members.email}">skhoct30@naver.com</td>
-					<td th:text="${members.introduce}">안녕하세요 저는 코딩을 배우...</td>
+					<td th:text="${members.name}">유재석</td>
+					<td th:text="${#temporals.format(members.birth, 'yyy년 m월 d일')}">2001년 4월 3일</td>
+					
+					<td>
+						<span th:if="${#strings.startsWith(members.phoneNumber, '010')}" th:text="${members.phoneNumber}">010-2222-1111</span>
+						<span th:unless="${#strings.startsWith(members.phoneNumber, '010')}">유효하지 않은 전화번호</span>
+					</td>
+					
+					<td th:text="${#strings.replace(members.nationality, '삼국시대', '삼국 -')}">대한민국 서울</td>
+					<td><b th:text="${#strings.arraySplit(members.email, '@')[0]}">yu</b>@<span th:text="${#strings.arraySplit(members.email, '@')[1]}">gmail.com</span></td>
+					<td th:text="${#strings.abbreviate(members.introduce, 18)}"></td>
+					<!-- 
+					<td>
+						<span th:if="${#strings.length(members.introduce) < 15}" th:text="${members.introduce}">안녕하세요 저는 코딩을 배우...</span>
+						<span th:unless="${#strings.length(members.introduce) < 15}"
+						 th:text="|${#strings.substring(members.introduce, 0, 15)}...|"></span>
+					</td>  -->
+					
+					
 				</tr>			
 			</tbody>		
 		</table>
