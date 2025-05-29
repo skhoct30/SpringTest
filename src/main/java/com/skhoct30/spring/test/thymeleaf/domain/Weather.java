@@ -1,11 +1,12 @@
 package com.skhoct30.spring.test.thymeleaf.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Weather {
 
 	private int id;
-	private String date;
+	private LocalDate date;
 	private String weather;
 	private double temperatures;
 	private double precipitation;
@@ -21,10 +22,10 @@ public class Weather {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 	public String getWeather() {
