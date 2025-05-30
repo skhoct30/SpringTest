@@ -35,12 +35,12 @@
 					</thead>
 					<tbody>
 						<tr th:each="weather:${weatherHistory}">
-							<td th:text="${#temporals.format(weather.date, 'yyyy년 MM월 dd일')}">2025년 5월 29일</td>
+							<td th:text="${#temporals.format(weather.date, 'yyyy년 M월 dd일')}">2025년 5월 29일</td>
 							<td th:switch="${weather.weather}">
-								<span th:case="맑음"><img alt="맑음" src="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg"></span>
-								<span th:case="구름조금"><img alt="구름조금" src="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg"></span>
-								<span th:case="비"><img alt="비" src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg"></span>
-								<span th:case="흐림"><img alt="흐림" src="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg"></span>
+								<img th:case="맑음" alt="맑음" src="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg">
+								<img th:case="구름조금" alt="구름조금" src="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg">
+								<img th:case="비" alt="비" src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg">
+								<img th:case="흐림" alt="흐림" src="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg">
 							</td>
 							<td th:text="|${weather.temperatures}°C|">21.9°C</td>
 							<td th:text="|${weather.precipitation}mm|">0.0mm</td>

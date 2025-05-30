@@ -1,5 +1,6 @@
 package com.skhoct30.spring.test.thymeleaf.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,21 @@ public class WeatherService {
 		List<Weather> weather = weatherRepository.selectWeather();
 		
 		return weather;
+	}
+	
+	
+	// 저장 기능
+	public int addWeather(
+			LocalDate date
+			, String weather
+			, double temperatures
+			, double precipitation
+			, String microDust
+			, double windSpeed) {
+		
+		int count = weatherRepository.insertWeather(date, weather, temperatures, precipitation, microDust, windSpeed);
+		
+		return count;
 	}
 	
 }
