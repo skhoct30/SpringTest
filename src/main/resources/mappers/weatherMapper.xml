@@ -51,6 +51,31 @@
 	
 	</insert>
 	
+	<!--  추가기능 -->
+	<insert id="insertWeatherByObject" parameterType="com.skhoct30.spring.test.thymeleaf.domain.Weather">
+	
+		INSERT INTO
+			`weatherhistory`
+		(
+			`date`
+			, `weather`
+			, `temperatures`
+			, `precipitation`
+			, `microDust`
+			, `windSpeed`
+		)
+		VALUE
+		(
+			#{date}
+			, #{weather}
+			, #{temperatures}
+			, #{precipitation}
+			, #{microDust}
+			, #{windSpeed}
+		)	
+	
+	
+	</insert>
 	
 	
 	

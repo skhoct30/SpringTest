@@ -41,4 +41,16 @@ public class WeatherService {
 		return count;
 	}
 	
+	
+	
+	// 추가 간단한 기능
+	
+	public int addWeatherByObject(Weather weather) {
+		
+		return weatherRepository.insertWeatherByObject(weather);
+		 
+	}
+	
+	
+	
 }
