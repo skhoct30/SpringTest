@@ -21,6 +21,6 @@ public interface FavoriteRepository {
 	
 	
 	// 이메일 중복 확인
-	public int selectCountByEmail(@Param("email")String email);
+	public int selectCountByUrl(@Param("url")String url);
 	
 }

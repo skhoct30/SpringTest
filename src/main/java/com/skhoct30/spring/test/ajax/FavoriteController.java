@@ -75,9 +75,19 @@ public class FavoriteController {
 	
 	
 	// 이메일 중복확인
-	public  inDuplicateEmail(@RequestParam("email")String email) {
+	@GetMapping("/duplicate-url")
+	@ResponseBody
+	public Map<String, Boolean> inDuplicateUrl(@RequestParam("url")String url) {
 		
+		Map<String, Boolean> resultMap = new HashMap<>();
 		
+		if(favoriteService.isDuplicate(url)) {
+			resultMap.put("isDuplicate", true);
+		} else {
+			resultMap.put("isDuplicate", false);
+		}
+		
+		return resultMap;
 	}
 	
 	

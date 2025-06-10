@@ -10,20 +10,49 @@
 	<div class="container">
 		
 		<h2>즐겨찾기 추가</h2>
-		<lable>이름</lable>
+		<lable  class="mt-3">이름</lable>
 		<input type="text" class="form-control" id="nameInput">
-		<label>주소</label>
+		<label class="mt-3">주소</label>
 		<div class="d-flex">
 			<input type="text" class="form-control col-11" id="urlInput">
-			<button type="button" class="btn btn-primary col-1 ml-2">중복확인</button>
+			<button type="button" class="btn btn-primary col-1 ml-2" id="duplicateBtn">중복확인</button>
 		</div>
-		<button id="addBtn" type="button" class="btn btn-success btn-block mt-5">추가</button>
+		<div class="small text-danger d-none" id="idInfoMessage">중복된 url 입니다.</div>
+		<button id="addBtn" type="button" class="btn btn-success btn-block mt-4">추가</button>
 	
 
 	</div>
 	
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 	<script>
+	
+		// url 중복확인
+		$("#duplicateBtn").on("click", function(){
+			let url = $("#urlInput").val();
+			
+			$.ajax({
+				type:"get"
+				, url:"/ajax/favorite/duplicate-email"
+				, data:{"url", url}
+				, succsee:function(response) {
+					if(response.isDuplicate){
+						// 중복됨
+						$("#idInfoMessage").addClass("d-none");
+					} else {
+						// 중복안됨
+						$("#idInfoMessage").removeClass("d-none");
+					}
+					
+					
+				}
+			})
+			
+		});
+		
+	
+	
+	
+	
 		
 		$("#addBtn").on("click", function() {
 			

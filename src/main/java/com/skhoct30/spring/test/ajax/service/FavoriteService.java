@@ -34,9 +34,9 @@ public class FavoriteService {
 	
 	// 이메일 중복 확인 API
 	
-	public boolean isDuplicate(String email) {
+	public boolean isDuplicate(String url) {
 		
-		int count = favoriteRepository.selectCountByEmail(email);
+		int count = favoriteRepository.selectCountByUrl(url);
 		
 		if(count == 0) {
 			return false;

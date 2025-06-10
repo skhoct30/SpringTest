@@ -36,6 +36,18 @@
 		)
 	
 	</insert>
+	
+	<select id="selectCountByUrl" parameterType="string" resultType="int">
+	
+		SELECT
+			count(*)
+		FROM
+			`favorites`
+		WHERE
+			`url` = #{url}
+	
+	
+	</select>
 
 
 
