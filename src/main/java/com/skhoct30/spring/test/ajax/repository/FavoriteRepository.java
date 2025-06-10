@@ -18,4 +18,9 @@ public interface FavoriteRepository {
 	public int insertFavorite(
 			@Param("name") String name
 			, @Param("url") String url);
+	
+	
+	// 이메일 중복 확인
+	public int selectCountByEmail(@Param("email")String email);
+	
 }

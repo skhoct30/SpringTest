@@ -31,4 +31,19 @@ public class FavoriteService {
 		return count;
 	}
 	
+	
+	// 이메일 중복 확인 API
+	
+	public boolean isDuplicate(String email) {
+		
+		int count = favoriteRepository.selectCountByEmail(email);
+		
+		if(count == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	
 }

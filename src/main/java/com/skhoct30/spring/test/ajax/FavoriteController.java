@@ -65,9 +65,19 @@ public class FavoriteController {
 		return resultMap;
 		
 	}
+	
+	
 	@GetMapping("/input")
 	public String inputFavorite() {
 		return "ajax/favorite/input";
+	}
+	
+	
+	
+	// 이메일 중복확인
+	public  inDuplicateEmail(@RequestParam("email")String email) {
+		
+		
 	}
 	
 	
