@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+	
+	<div class="container">
+		
+		<h2>즐겨찾기 추가</h2>
+		<lable>이름</lable>
+		<input type="text" class="form-control" id="nameInput">
+		<label>주소</label>
+		<input type="text" class="form-control" id="urlInput">
+		<button id="addBtn" type="button" class="btn btn-success btn-block mt-3">추가</button>
+	
+
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script>
+		
+		$("#addBtn").on("click", function() {
+			
+			let name = $("#nameInput").val();
+			let url = $("#urlInput").val();
+			
+			//alert(name + " " + url);
+			
+			if(name == "") {
+				alert("사이트 이름을 입력하세요");
+				return;
+			}
+			
+			if(url =="") {
+				alert("주소를 입력하세요");
+				return;
+			}
+			
+			
+			//유효성 검사
+			// 주소가 http:// 로 시작하지 않는다 (그리고), https:// 로 시작하지 않는다. (둘다 만족하지 않는다.)
+			// 조건이 잘못되게 입력이 되는지 ? 그걸 알아야하는데
+			// 이거는 논리연산자로 해야한다.
+			
+			// 시작한다 (http://) ! 넣어서 하지않는다!
+			if(!url.startsWith("http://") && !url.startsWith("https://")) {
+				alert("잘못된 규격의 url 입니다.");
+				return;
+			}
+			
+			$.ajax({
+				type:"post"
+				, url:"/ajax/favorite/create"
+				, data:{"name":name, "url":url}
+				, success:function(response) {
+					// 성공 {"result":"success"}
+					// 실패 {"result":"fail"}					
+					if(response.result == "success") {
+						//  /ajax/favorite/list 로 이동 시키기
+						// 새로운 요청
+						location.href = "/ajax/favorite/list";
+					} else {
+						alert("즐겨찾기 추가 실패!");
+					}
+				}
+				, error:function() {
+					alert("즐겨찾기 추가 에러!");
+				}
+			})
+			
+			
+		});
+		
+	
+	</script>
+	
+
+
+</body>
+</html>

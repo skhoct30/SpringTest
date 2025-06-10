@@ -16,9 +16,19 @@ public class FavoriteService {
 	
 	public List<Favorite> getFavorite() {
 		
-		List<Favorite> favorite = favoriteRepository.selectFavorite();
+		List<Favorite> favoriteList = favoriteRepository.selectFavorite();
 		
-		return favorite;
+		return favoriteList;
+	}
+	
+	
+	// 즐겨찾기 추가 API
+	
+	public int addFavorite(String name, String url) {
+		
+		int count = favoriteRepository.insertFavorite(name, url);
+		
+		return count;
 	}
 	
 }

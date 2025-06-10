@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+
+
+	<div class="container">
+	
+		<h2>즐겨찾기 목록</h2>
+		
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th>No</th>
+					<th>이름</th>
+					<th>주소</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="favorite:${favoriteList}">
+					<td th:text="${favorite.id}">12</td>
+					<td th:text="${favorite.name}">인스타그램</td>
+					<td th:text="${favorite.url}">http://instagram.com</td>
+				</tr>		
+			</tbody>
+		</table>
+		
+	</div>
+
+
+</body>
+</html>

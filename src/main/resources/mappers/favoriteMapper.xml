@@ -15,9 +15,27 @@
 			, `updatedAt`
 		FROM
 			`favorites`
+		ORDER BY
+			`id` DESC
 	
 	
 	</select>
+	
+	<insert id="insertFavorite" parameterType="map">
+	
+		INSERT INTO
+			`favorites`
+		(
+			`name`
+			, `url`
+		)
+		VALUE
+		(
+			#{name}
+			, #{url}
+		)
+	
+	</insert>
 
 
 
