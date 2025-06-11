@@ -48,6 +48,17 @@
 	
 	
 	</select>
+	
+	
+	<!--  delete 타입은 고정되어 있어서 resultType 은 int ( 정수로 한행을 지워서 알려주는거여서 고정이라 작성 x) -->
+	<delete id="deleteFavorite" parameterType="int">
+		DELETE FROM
+			`favorites`
+		WHERE
+			`id` = #{id}
+	
+	
+	</delete>
 
 
 

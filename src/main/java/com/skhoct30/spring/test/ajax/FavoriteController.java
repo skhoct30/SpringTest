@@ -75,13 +75,13 @@ public class FavoriteController {
 	
 	
 	// 이메일 중복확인
-	@GetMapping("/duplicate-url")
+	@PostMapping("/duplicate-url")
 	@ResponseBody
 	public Map<String, Boolean> inDuplicateUrl(@RequestParam("url")String url) {
 		
 		Map<String, Boolean> resultMap = new HashMap<>();
 		
-		if(favoriteService.isDuplicate(url)) {
+		if(favoriteService.isDuplicateUrl(url)) {
 			resultMap.put("isDuplicate", true);
 		} else {
 			resultMap.put("isDuplicate", false);
@@ -89,6 +89,37 @@ public class FavoriteController {
 		
 		return resultMap;
 	}
+	
+	
+	
+	// 삭제하기 버튼 만들기
+	@ResponseBody
+	@GetMapping("/delete")
+	public Map<String, String> deleteFavorite(@RequestParam("id") int id) {
+		
+		
+		// 리턴된 값은 삭제된 행의 개수라서 count
+		int count = favoriteService.deleteFavorite(id);
+		
+		// 삭제를 다 했는데 이제 뭘 전달할거임?
+		// 무난하게 성공 실패 여부를 데이터로 담아주면 좋을거 같다.
+		// 성공 : {"result":"success"}
+		// 실패 : {"result":"fail"}
+		// 위와 같이하는 이유는 json문자열을 전달해주기 위해서 저렇게 작성하고 map 에 넣어서 할거임
+		
+		Map<String, String> resultMap = new HashMap<>();
+		
+		if(count == 1) {
+			//성공 왜? 1이 되는거면 삭제된걸 알려주는거라서
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+		
+	}
+	
 	
 	
 	

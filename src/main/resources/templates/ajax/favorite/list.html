@@ -18,6 +18,7 @@
 					<th>No</th>
 					<th>이름</th>
 					<th>주소</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -25,11 +26,50 @@
 					<td th:text="${favorite.id}">12</td>
 					<td th:text="${favorite.name}">인스타그램</td>
 					<td th:text="${favorite.url}">http://instagram.com</td>
+					<td><button type="button" th:value="${favorite.id}" class="btn btn-danger btn-sm delete-btn">삭제</button></td>
 				</tr>		
 			</tbody>
 		</table>
 		
 	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script>
+		
+	
+		//삭제를 위한 api
+		// 클래서는 # 이 아니라 .  이다
+		// # = id / . = class
+		$(".delete-btn").on("click", function(){
+			let id = $(this).val();
+			
+			// alert(id);
+			
+			$.ajax({
+				type:"get"
+				, url:"/ajax/favorite/delete"
+				, data:{"id":id}
+				, success:function(response) {
+					
+					// 성공 : {"result":"success"}
+					// 실패 : {"result":"fail"}
+					if(response.result == "success") {
+						// 삭제가 된거니까 리스트 페이지를 다시 받아오자
+						// 새로고침
+						location.reload();
+					} else {
+						alert("삭제 실패!");
+					}
+				
+				}
+				, error:function() {
+					alert("삭제 에러!");
+				}
+			});
+		});
+	
+	
+	</script>
 
 
 </body>

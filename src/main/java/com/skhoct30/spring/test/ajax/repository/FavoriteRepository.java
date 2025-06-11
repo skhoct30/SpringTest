@@ -23,4 +23,10 @@ public interface FavoriteRepository {
 	// 이메일 중복 확인
 	public int selectCountByUrl(@Param("url")String url);
 	
+	
+	
+	// 삭제를 위한 쿼리를 수행할 메소드 추가
+	//     int 인 이유는 삭제된 행의 개수를 알려주는거라서
+	public int deleteFavorite(@Param("id") int id);
+	
 }

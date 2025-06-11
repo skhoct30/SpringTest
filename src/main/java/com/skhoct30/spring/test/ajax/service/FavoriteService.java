@@ -34,9 +34,10 @@ public class FavoriteService {
 	
 	// 이메일 중복 확인 API
 	
-	public boolean isDuplicate(String url) {
-		
+	public boolean isDuplicateUrl(String url) {
+		// 행의 개수 (정수) 그래서 count 라고 하고 있음.
 		int count = favoriteRepository.selectCountByUrl(url);
+		
 		
 		if(count == 0) {
 			return false;
@@ -44,6 +45,18 @@ public class FavoriteService {
 			return true;
 		}
 	}
+	
+	
+	
+	// id를 전달받고 즐겨찾기를 삭제하는 기능
+	
+	public int deleteFavorite(int id) {
+		
+		int count = favoriteRepository.deleteFavorite(id);
+		
+		return count;
+	}
+	
 	
 	
 }
