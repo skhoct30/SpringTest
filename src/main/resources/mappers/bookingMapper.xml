@@ -22,6 +22,16 @@
 			`booking`
 
 	</select>
+	
+	<delete id="deleteBooking" parameterType="int">
+	
+		DELETE FROM
+			`booking`
+		WHERE
+			`id` = ${id}
+	
+	</delete>
+	
 
 
 </mapper>

@@ -47,10 +47,10 @@
 	    			<td th:text="${booking.headcount}">4</td>
 	    			<td th:text="${booking.phoneNumber}">010-1234-1111</td>
 	    			<td th:switch="${booking.state}">
-	    				<span th:case="대기중" class="text-primary"></span>
-	    				<span th:case="확정" class="text-success"></span>
+	    				<span th:case="대기중" class="text-primary">대기중</span>
+	    				<span th:case="확정" class="text-success">확정</span>
 	    			</td>
-	    			<td><button type="button" class="btn btn-sm btn-danger">삭제</button></td>
+	    			<td><button type="button" th:value="${booking.id}" class="btn btn-sm btn-danger delete-btn">삭제</button></td>
 	    		</tr>
 	    	</tbody>
 	    
@@ -67,6 +67,36 @@
 	    </footer>
 	</div>
 
+
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script>
+		
+		$(".delete-btn").on("click", function(){
+			
+			let id = $(this).val();
+			//alert(id);
+			
+			$.ajax({
+				type:"get"
+				, url:"/ajax/booking/delete"
+				, data:{"id":id}
+				, success:function(response) {
+					if(response.result == "success") {
+						location.reload();
+					} else {
+						alert("삭제 실패!");
+					}
+				}
+				, error:function(){
+					alert("삭제 에러!");
+				}
+			});
+			
+		});
+		
+	
+	
+	</script>
 
 
 

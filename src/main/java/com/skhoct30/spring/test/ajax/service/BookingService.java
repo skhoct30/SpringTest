@@ -25,5 +25,15 @@ public class BookingService {
 		
 	}
 	
+	// 삭제버튼을 위한 api
+	
+	public int deleteBooking(int id) {
+		
+		int count = bookingRepository.deleteBooking(id);
+		
+		return count;
+		
+	}
+	
 	
 }
