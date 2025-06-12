@@ -74,7 +74,7 @@ public class FavoriteController {
 	
 	
 	
-	// 이메일 중복확인
+	// 중복확인
 	@PostMapping("/duplicate-url")
 	@ResponseBody
 	public Map<String, Boolean> inDuplicateUrl(@RequestParam("url")String url) {
@@ -119,6 +119,8 @@ public class FavoriteController {
 		return resultMap;
 		
 	}
+	
+
 	
 	
 	

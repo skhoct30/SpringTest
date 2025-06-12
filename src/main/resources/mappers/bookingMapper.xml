@@ -20,6 +20,8 @@
 			, `updatedAt`
 		FROM
 			`booking`
+		ORDER BY
+			`id` DESC
 
 	</select>
 	
@@ -28,9 +30,37 @@
 		DELETE FROM
 			`booking`
 		WHERE
-			`id` = ${id}
+			`id` = #{id}
 	
 	</delete>
+	
+	
+	<insert id="insertBooking" parameterType="map">
+	
+		INSERT INTO
+			`booking`
+		(
+			`name`
+			, `headcount`
+			, `day`
+			, `date`
+			, `phoneNumber`
+			, `state`
+		)
+		VALUE
+		(
+			#{name}
+			, #{headcount}
+			, #{day}
+			, #{date}
+			, #{phoneNumber}
+			, #{state}
+		)
+	
+	</insert>
+	
+	
+	
 	
 
 

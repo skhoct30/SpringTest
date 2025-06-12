@@ -1,5 +1,6 @@
 package com.skhoct30.spring.test.ajax.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -19,4 +20,20 @@ public interface BookingRepository {
 	
 	public int deleteBooking(@Param("id")int id);
 	
+	
+	
+	// 추가하는 api
+	
+	public int insertBooking(
+			@Param("name") String name
+			, @Param("date") LocalDate date
+			, @Param("day") int day
+			, @Param("headcount") int headcount
+			, @Param("phoneNumber") String phoneNumber
+			, @Param("state") String state);
+	
+	
+	// 조회 
+	
+
 }

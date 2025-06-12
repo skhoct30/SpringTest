@@ -47,8 +47,11 @@
 	    			<td th:text="${booking.headcount}">4</td>
 	    			<td th:text="${booking.phoneNumber}">010-1234-1111</td>
 	    			<td th:switch="${booking.state}">
-	    				<span th:case="대기중" class="text-primary">대기중</span>
+	    				<span th:case="대기중" class="text-info">대기중</span>
 	    				<span th:case="확정" class="text-success">확정</span>
+	    				<span th:case="취소" class="text-danger">취소</span>
+	    				<!-- 이 케이스에 대흥되지 않는 경우 -->
+	    				<span th:case="*" th:text="${booking.state}"></span>
 	    			</td>
 	    			<td><button type="button" th:value="${booking.id}" class="btn btn-sm btn-danger delete-btn">삭제</button></td>
 	    		</tr>
@@ -73,13 +76,13 @@
 		
 		$(".delete-btn").on("click", function(){
 			
-			let id = $(this).val();
+			let bookingid = $(this).val();
 			//alert(id);
 			
 			$.ajax({
 				type:"get"
 				, url:"/ajax/booking/delete"
-				, data:{"id":id}
+				, data:{"id":bookingid}
 				, success:function(response) {
 					if(response.result == "success") {
 						location.reload();
