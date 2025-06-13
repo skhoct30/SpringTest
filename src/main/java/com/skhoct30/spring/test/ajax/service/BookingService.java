@@ -55,7 +55,12 @@ public class BookingService {
 	
 	// 이름과 전화번호를 이용해 사용자 정보 조회
 	
-
+	public Booking getBooking(String name, String phoneNumber) {
+		
+		
+		Booking booking = bookingRepository.searchBooking(name, phoneNumber);
+		return booking;
+	}
 	
 	
 	

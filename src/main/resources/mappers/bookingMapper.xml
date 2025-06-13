@@ -35,29 +35,26 @@
 	</delete>
 	
 	
-	<insert id="insertBooking" parameterType="map">
-	
-		INSERT INTO
-			`booking`
-		(
-			`name`
+	<select id="searchBooking" resultType="com.skhoct30.spring.test.ajax.domain.Booking">
+		SELECT
+			`id`
+			, `name`
 			, `headcount`
 			, `day`
 			, `date`
 			, `phoneNumber`
 			, `state`
-		)
-		VALUE
-		(
-			#{name}
-			, #{headcount}
-			, #{day}
-			, #{date}
-			, #{phoneNumber}
-			, #{state}
-		)
+			, `createdAt`
+			, `updatedAt`
+			
+		FROM
+			`booking`
+		WHERE
+			`name` = #{name}
+			AND `phoneNumber` = #{phoneNumber}
 	
-	</insert>
+	
+	</select>
 	
 	
 	

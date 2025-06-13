@@ -35,5 +35,9 @@ public interface BookingRepository {
 	
 	// 조회 
 	
+	public Booking searchBooking(
+			@Param("name") String name
+			, @Param("phoneNumber") String phoneNumber);
+	
 
 }

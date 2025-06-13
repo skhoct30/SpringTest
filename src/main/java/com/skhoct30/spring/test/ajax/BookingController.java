@@ -108,14 +108,31 @@ public class BookingController {
 	
 	
 	// 이름 전화번호를 통한 예약확인
-//	@GetMapping("/select-list")
-//	public  selectBybooking(
-//			@RequestParam("name") String name
-//			, @RequestParam("phoneNumber") String phoneNumber) {
-//		
-//		bookingService.selectBybooking(name, phoneNumber);
-//		
-//	}
+	@ResponseBody
+	@GetMapping("/search")
+	public Map<String, Object> searchBooking(
+			@RequestParam("name") String name
+			, @RequestParam("phoneNumber") String phoneNumber) {
+		
+		Booking booking = bookingService.getBooking(name, phoneNumber);
+		
+		Map<String, Object> resultMap = new HashMap<>();
+		// 추가적으로 더 디테일 하게 하는 법
+		// 조회 성공 : {"result":"success", "data":{"name":"김인규", "date":2025-06-12, "day":3, "headcount":2}}
+		// 조호 실패 : {"result":"fail"}
+		// 전에는 조회를 하면 sql에서 1 과 0으로 표시해줬는데 
+		// 이젠 내용이 안에 있고 없고(null) 로 한다
+		
+		if(booking != null) {
+			resultMap.put("result", "success");
+			resultMap.put("data", booking); // 뒤에 데이터 값에 booking 을 그냥 넣은 이유는 booking에는 위에 회원정보가 들어가 있음
+		} else {
+			resultMap.put("result", "fail");	
+		}
+
+		return resultMap;
+		
+	}
 	
 	
 	
